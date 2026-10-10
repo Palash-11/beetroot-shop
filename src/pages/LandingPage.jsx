@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createOrder } from '../api/ordersApi';
 import { 
   CheckCircle, ShieldCheck, Heart, Zap, Award, 
   Clock, Truck, Star, ArrowRight, ShoppingBag 
@@ -19,25 +20,19 @@ export default function BeetrootLandingPage() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      const response = await fetch('/api/v1/orders/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      if (response.ok) {
-        setOrderSuccess(true);
-      } else {
-        alert('অর্ডার প্রক্রিয়াভুক্ত করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।');
-      }
-    } catch (err) {
-      alert('সার্ভার ত্রুটি! ইন্টারনেটের সংযোগ পরীক্ষা করুন।');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    await createOrder(formData);
+    setOrderSuccess(true);
+  } catch (err) {
+    console.error("Order error:", err);
+    alert('অর্ডার প্রক্রিয়াভুক্ত করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <div className="bg-slate-50 min-h-screen text-slate-800 font-sans">
