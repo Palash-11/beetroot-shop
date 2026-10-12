@@ -79,7 +79,7 @@ export default function BeetrootLandingPage() {
           <img 
   src="/images/placeholder-beetroot.jpg" 
   alt="Beetroot Powder Packaging" 
-  className="rounded-2xl shadow-2xl object-contain bg-white w-full h-80 md:h-[400px]"
+  className="rounded-2xl shadow-2xl object-contain bg-white w-full max-h-[480px]"
 />
           <div className="absolute -bottom-4 -left-4 bg-white p-4 rounded-xl shadow-lg border border-slate-100 flex items-center gap-3">
             <Award className="w-10 h-10 text-amber-500" />
