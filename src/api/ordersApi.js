@@ -16,3 +16,4 @@ export const createOrder = (data) => {
     payment_method: "cod",
   });
 };
+export const wakeServer = () => API.get("/").catch(() => {});

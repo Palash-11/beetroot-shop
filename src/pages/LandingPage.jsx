@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { createOrder } from '../api/ordersApi';
+import React, { useState, useEffect } from 'react';
+import { createOrder, wakeServer } from '../api/ordersApi';
 import { 
   CheckCircle, ShieldCheck, Heart, Zap, Award, 
   Clock, Truck, Star, ArrowRight, ShoppingBag 
@@ -14,6 +14,11 @@ export default function BeetrootLandingPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
+
+  // পেজ খোলার সাথে সাথে ব্যাকএন্ড জাগিয়ে দিন
+  useEffect(() => {
+    wakeServer();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
