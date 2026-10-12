@@ -1,8 +1,5 @@
-import axios from "axios";
-
-const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
-});
+// src/api/ordersApi.js
+import API from "./axios";
 
 const PRODUCT_ID = 1;
 const DELIVERY_ZONE_ID = 2; // Inside Dhaka
