@@ -1,3 +1,4 @@
+import { getProducts } from '../api/productsApi';
 import React, { useState, useEffect } from 'react';
 import { createOrder, wakeServer } from '../api/ordersApi';
 import { 
@@ -17,8 +18,8 @@ export default function BeetrootLandingPage() {
 
   // পেজ খোলার সাথে সাথে ব্যাকএন্ড জাগিয়ে দিন
   useEffect(() => {
-    wakeServer();
-  }, []);
+  getProducts().catch(() => {});
+}, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -76,10 +77,10 @@ export default function BeetrootLandingPage() {
         </div>
         <div className="relative">
           <img 
-            src="/images/beetroot-hero.jpg" 
-            alt="Beetroot Powder Packaging" 
-            className="rounded-2xl shadow-2xl object-cover w-full h-80 md:h-[400px]"
-          />
+  src="/images/placeholder-beetroot.jpg" 
+  alt="Beetroot Powder Packaging" 
+  className="rounded-2xl shadow-2xl object-contain bg-white w-full h-80 md:h-[400px]"
+/>
           <div className="absolute -bottom-4 -left-4 bg-white p-4 rounded-xl shadow-lg border border-slate-100 flex items-center gap-3">
             <Award className="w-10 h-10 text-amber-500" />
             <div>
